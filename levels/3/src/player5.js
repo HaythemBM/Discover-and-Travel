@@ -10,7 +10,7 @@ var player = {
 }
 
 //----------------------------------------------------------
-
+let stopp=0;
 move = function (timeDelta) {
 
     var move_abs = timeDelta / gameCycleDelay;
@@ -34,35 +34,50 @@ move = function (timeDelta) {
         newY = player.y + Math.sin(player.rotation + 90 * Math.PI / 180) * moveStep;
     }
    
-    var position = checkCollision(player.x, player.y, newX, newY, 0.35);
+    var position = checkCollision(player.x, player.y, newX, newY, 0.40);
     player.x = position.x;
     player.y = position.y;
-    console.log(`this is x: ${position.x}`);
-    console.log(position.y);
+    console.log(`this is x;${position.x}`);
+    console.log(`this is y;${position.y}`);
+ 
 
-      if(player.x>17.8 && player.x<18 && clicked===false   ){ 
-        document.getElementById("popup").style.display = "block";
-        
+    if(player.x>18.46 && player.x<18.9 && clicked===false   ){ 
+    
+            document.getElementById("popup").style.display = "block";
+        stopp=1;
 
   
-    } 
-     if(player.x>20 && player.y>15.4 && clicked2 === false ){
+    }   
+    else 
+    stopp =0; 
+
+    if(((player.x<14.6 && player.y<14.55) ||(player.x<14.74 && player.y>14.65)||(player.x<14.43 && player.y>14.47)) && clicked2 === false ){
       document.getElementById("popup2").style.display = "block";
       console.log('popup2');
+      stopp=1;
+      
 
      }
-      if(player.x>22.6  && player.x<24  && player.y<14.57  && player.y>14.4  && clicked3 === false ){
+     
+     if(player.x<13.5 && player.x>13.3 && player.y<19.3 && player.y>17.4 && clicked3 === false ){
         document.getElementById("popup3").style.display = "block";
         console.log('popup3');
-  
-       }
-        if(player.x<24.4 &&  player.y<23.4 &&  player.y>21.8){
-        document.getElementById("popupglob").style.display = "block";
-        console.log('popupgl');
-        
-       }  
-}
+        stopp=1; 
+ 
 
+   
+       }  
+       if(player.x<11.67 &&  player.y<24){
+        document.getElementById("finish").style.display = "block";
+        console.log('popupgl');
+        stopp=1; 
+        stoop();
+     }
+          
+        
+       
+      
+            }
 //----------------------------------------------------------
 
 checkCollision = function (fromX, fromY, toX, toY, radius) {
@@ -160,8 +175,8 @@ function isBlocking(x, y) {
         return true;
     if (map[y >> 0][x >> 0] != 0)
         return true;
-    if (spritePosition[y >> 0][(x) >> 0] && spritePosition[y >> 0][x >> 0].block)
-        return true;
+   /*  if (spritePosition[y >> 0][(x) >> 0] && spritePosition[y >> 0][x >> 0].block)
+        return true; */
     return false;
 }
 
@@ -193,22 +208,36 @@ addKeys = function () {
             const modelViewer = document.querySelector('#paused-change-demo');
           
             
-              modelViewer.animationName = 'CharacterArmature|Walk' ;
+            modelViewer.animationName = 'CharacterArmature|Walk' ;
                 
             
           })();
         switch (event.keyCode) {
 
             case 38: // up
-                player.vertical = 1; break;
+                if(stopp==1)player.vertical = 0;
+
+                else 
+                player.vertical=1;
+                 break;
             case 40: // down
-                player.vertical = -1; break;
-            case 16: // horizontal
-                player.horizontal = true; break;
+            
+              if(stopp==1)player.vertical = 0;
+            else  player.vertical=-1;
+                 break;
+            /* case 16: // horizontal
+                player.horizontal = true; break; */
             case 37: // left
-                player.direction = -1; break;
+
+            if(stopp==1)player.direction = 0;
+             else
+             player.direction=-1; 
+               break;
             case 39: // right
-                player.direction = 1; break;
+             if(stopp==1)player.direction = 0;
+            else 
+            player.direction=1; 
+             break;
         }
     }
 

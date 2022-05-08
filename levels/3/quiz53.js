@@ -8,7 +8,7 @@ const timeText3 = document.querySelector(".timer3 .time_left_txt3");
 const timeCount3 = document.querySelector(".timer3 .timer_sec3");
 
 
-/*let progress = setInterval (() => {
+/* let progress2 = setInterval (() => {
     valuecontainer.textContent= `${progressvalue}%`;
     progressbar.style.background= `conic-gradient(
         #b8973d ${progressvalue * 3.6}deg,
@@ -17,7 +17,7 @@ const timeCount3 = document.querySelector(".timer3 .timer_sec3");
     if (progressvalue==progressendvalue) {
         clearInterval(progress);
     }
-    }, speed);*/
+    }, speed) */;
     
 // if continueQuiz button clicked
 start_btn3.onclick = ()=>{
@@ -39,16 +39,17 @@ let widthValue3 = 0;
 
 //const restart_quiz = result_box.querySelector(".buttons .restart");
 const resume3 = result_box3.querySelector(".buttons3 .quit3");
-
+const retry3 = result_box3.querySelector(".buttons3 .retry3");
 var clicked3 =false;
 
 // if quitQuiz button clicked
  resume3.addEventListener('click',  ()  =>  {
     document.getElementById("popup3").style.display = 'none';
-    document.getElementById("popup").style.display = 'none';
+    //document.getElementById("popup").style.display = 'none';
     document.getElementById('hint2').style.display = 'block';
-    if (progressvalue<100) {
-        progressvalue+=25;
+    
+     if (progressvalue<100) {
+        progressvalue+=40;
     }
     else{
         progressvalue=100;
@@ -59,7 +60,8 @@ var clicked3 =false;
         #fcf4de ${progressvalue * 3.6}deg
         )`;
     
-    clicked3=true;
+    
+    clicked3=true; 
 
 });  
 
@@ -126,6 +128,7 @@ function optionSelected3(answer){
         answer.insertAdjacentHTML("beforeend", tickIconTag3); //adding tick icon to correct selected option
         console.log("Correct Answer");
         console.log("Your correct answers = " + userScore3);
+        totalscore += 1;
     }else{
         answer.classList.add("incorrect"); //adding red color to correct selected option
         answer.insertAdjacentHTML("beforeend", crossIconTag3); //adding cross icon to correct selected option
@@ -150,19 +153,53 @@ function showResult3(){
     quiz_box3.classList.remove("activeQuiz3"); //hide quiz box
     result_box3.classList.add("activeResult3"); //show result box
     const scoreText3 = result_box3.querySelector(".score_text3");
-    if (userScore3 > 2){ // if user scored more than 3
+    if (userScore3 ==3){ // if user scored more than 3
         //creating a new span tag and passing the user score number and total question number
         let scoreTag3 = '<span>and congrats! , You got <p>'+ userScore3 +'</p> out of <p>'+ questions3.length +'</p></span>';
         scoreText3.innerHTML = scoreTag3;  //adding new span tag inside score_Text
+        userScore3=0;
+        retry3.disabled=true;
+        resume3.disabled=false;
     }
-    else if(userScore3 > 1){ // if user scored more than 1
+    else if(userScore3 >= 1){ // if user scored more than 1
         let scoreTag3 = '<span>and nice , You got <p>'+ userScore3 +'</p> out of <p>'+ questions3.length +'</p></span>';
         scoreText3.innerHTML = scoreTag3;
+        userScore3=0;
+        retry3.disabled=true;
+        resume3.disabled=false;
     }
-    else{ // if user scored less than 1
+    else if(userScore3 ==0){ // if user scored less than 1
         let scoreTag3 = '<span>and sorry , You got only <p>'+ userScore3 +'</p> out of <p>'+ questions3.length +'</p></span>';
         scoreText3.innerHTML = scoreTag3;
-    }
+        retry3.addEventListener('click',  ()  =>  {
+            result_box3.classList.remove("activeResult3");
+             timeValue3 =  15;
+             que_count3 = 0;
+              que_numb3 = 1;
+               counter3;
+              counterLine3;
+              widthValue3 = 0;
+        
+            quiz_box3.classList.add("activeQuiz3");
+            
+    
+                 //show quiz box
+            //calling startTimerLine function
+            
+            showQuetions3(0); //calling showQestions function
+            queCounter3(1); //passing 1 parameter to queCounter
+            startTimer3(15); //calling startTimer function
+            startTimerLine3(0);
+             
+        
+        
+        }); 
+        retry3.disabled=false;
+        resume3.disabled=true;
+        }
+        console.log(`totalscore${totalscore}`);
+       
+    
 }
 
 function startTimer3(time){

@@ -1,22 +1,39 @@
 //selecting all required elements
 const start_btn = document.querySelector(".start_btn button");
-const info_box = document.querySelector(".info_box");
+
 const quiz_box = document.querySelector(".quiz_box");
 const result_box = document.querySelector(".result_box");
 const option_list = document.querySelector(".option_list");
 const time_line = document.querySelector("header .time_line");
 const timeText = document.querySelector(".timer .time_left_txt");
 const timeCount = document.querySelector(".timer .timer_sec");
+
 let progressbar=document.querySelector(".circular-progress");
 let valuecontainer=document.querySelector(".value-container");
-
 let progressvalue=0;
 let progressendvalue=100;
 let speed=50;
-/* next_btn.addEventListener('click',() =>{
-    window.location.href='../index.html';  //reload the current window
+let totalscore=0;
 
-}); */
+
+// if continueQuiz button clicked;
+start_btn.onclick = ()=>{
+    
+   // info_box.classList.remove("activeInfo"); //hide info box
+    quiz_box.classList.add("activeQuiz"); //show quiz box
+    showQuetions(0); //calling showQestions function
+    queCounter(1); //passing 1 parameter to queCounter
+    startTimer(15); //calling startTimer function
+    startTimerLine(0); //calling startTimerLine function
+    
+}
+let timeValue =  15;
+let que_count = 0;
+let que_numb = 1;
+let userScore= 0;
+let counter;
+let counterLine;
+let widthValue = 0;
 
 const newLocal = 20.6;
 let progress = setInterval (() => {
@@ -30,38 +47,20 @@ if (progressvalue==progressendvalue) {
 }
 }, speed);
 
-
-
-// if continueQuiz button clicked;
-start_btn.onclick = ()=>{
-    
-   // info_box.classList.remove("activeInfo"); //hide info box
-    quiz_box.classList.add("activeQuiz"); //show quiz box
-    showQuetions(0); //calling showQestions function
-    queCounter(1); //passing 1 parameter to queCounter
-    startTimer(15); //calling startTimer function
-    startTimerLine(0); //calling startTimerLine function
-}
-
-let timeValue =  15;
-let que_count = 0;
-let que_numb = 1;
-let userScore = 0;
-let counter;
-let counterLine;
-let widthValue = 0;
-
 //const restart_quiz = result_box.querySelector(".buttons .restart");
-const resume = result_box.querySelector(".buttons .quit");
 
+const retry = result_box.querySelector(".buttons .retry");
 
 var clicked =false;
-// if quitQuiz button clicked
+const resume = result_box.querySelector(".buttons .quit");
  resume.addEventListener('click',  ()  =>  {
+    clicked=true;
+
     document.getElementById('popup').style.display = 'none';
     document.getElementById('hint').style.display = 'block';
+    
     if (progressvalue<100) {
-        progressvalue+=25;
+        progressvalue+=30;
     }
     else{
         progressvalue=100;
@@ -71,13 +70,8 @@ var clicked =false;
         #b8973d ${progressvalue * 3.6}deg,
         #fcf4de ${progressvalue * 3.6}deg
         )`;
-    
-    clicked=true;
-
 
 }); 
-
-
 const next_btn = document.querySelector("footer .next_btn");
 const bottom_ques_counter = document.querySelector("footer .total_que");
 
@@ -118,7 +112,7 @@ function showQuetions(index){
 
     // set onclick attribute to all available options
     for(i=0; i < option.length; i++){
-        option[i].setAttribute("onclick", "optionSelected2(this)");
+        option[i].setAttribute("onclick", "optionSelected(this)");
     }
 }
 // creating the new div tags which for icons
@@ -126,12 +120,14 @@ let tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
 let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
 //if user clicked on option
-function optionSelected2(answer){
+function optionSelected(answer){
+    
     clearInterval(counter); //clear counter
     clearInterval(counterLine); //clear counterLine
     let userAns = answer.textContent; //getting user selected option
     let correcAns = questions[que_count].answer; //getting correct answer from array
     const allOptions = option_list.children.length; //getting all option items
+    
     
     if(userAns == correcAns){ //if user selected option is equal to array's correct answer
         userScore += 1; //upgrading score value with 1
@@ -139,6 +135,8 @@ function optionSelected2(answer){
         answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
         console.log("Correct Answer");
         console.log("Your correct answers = " + userScore);
+        totalscore=userScore;
+        
     }else{
         answer.classList.add("incorrect"); //adding red color to correct selected option
         answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
@@ -156,27 +154,62 @@ function optionSelected2(answer){
         option_list.children[i].classList.add("disabled1"); //once user select an option then disabled all options
     }
     next_btn.classList.add("show"); //show the next button if user selected any option
+    
 }
 
 function showResult(){
+    
    /*  info_box.classList.remove("activeInfo"); //hide info box */
     quiz_box.classList.remove("activeQuiz"); //hide quiz box
     result_box.classList.add("activeResult"); //show result box
     const scoreText = result_box.querySelector(".score_text");
-    if (userScore > 2){ // if user scored more than 3
+    if (userScore ==3){ // if user scored more than 3
         //creating a new span tag and passing the user score number and total question number
         let scoreTag = '<span>and congrats! , You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;  //adding new span tag inside score_Text
+        userScore=0;
+        retry.disabled=true;
+        resume.disabled=false;
+       
     }
-    else if(userScore > 1){ // if user scored more than 1
+    else if(userScore >=1){ // if user scored more than 1
         let scoreTag = '<span>and nice , You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;
+        userScore=0;
+        retry.disabled=true;
+        resume.disabled=false;
+
     }
-    else{ // if user scored less than 1
+    else if(userScore ==0) { // if user scored less than 1
         let scoreTag = '<span>and sorry , You got only <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;
+        retry.addEventListener('click',  ()  =>  {
+        result_box.classList.remove("activeResult");
+         timeValue =  15;
+         que_count = 0;
+          que_numb = 1;
+           counter;
+          counterLine;
+          widthValue = 0;
+    
+        quiz_box.classList.add("activeQuiz");
+        
+        showQuetions(0); //calling showQestions function
+        queCounter(1); //passing 1 parameter to queCounter
+        startTimer(15); //calling startTimer function
+        //startTimerLine(0);
+         
+    
+    
+    }); 
+    retry.disabled=false;
+    resume.disabled=true;
+    
     }
+    
+    console.log(totalscore);
 }
+
 
 function startTimer(time){
     counter = setInterval(timer, 1000);
@@ -223,6 +256,8 @@ function queCounter(index){
     let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ questions.length +'</p> Questions</span>';
     bottom_ques_counter.innerHTML = totalQueCounTag;  //adding new span tag inside bottom_ques_counter
 }
+// function retry(){
+
 
 
 

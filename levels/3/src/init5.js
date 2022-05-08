@@ -6,6 +6,8 @@ window.onload = function () {    //Execute a JavaScript immediately after a page
     addKeys();
     initScreen();
     initSprites();
+    initSprites1();
+    initSprites2();
    // initEnemies();
     drawMap();
     gameCycle();
@@ -45,9 +47,11 @@ gameCycle = function () {
 renderCycle = function () {
 
     updateMap();
-    clearSprites();
+   // clearSprites();
     castRays();
     renderSprites();
+    renderSprites1();
+    renderSprites2();
     renderEnemies();
     updateBackground();
 

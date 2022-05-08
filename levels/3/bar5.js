@@ -1,13 +1,13 @@
-let progressbar=document.querySelector(".circular-progress");
+/*let progressbar=document.querySelector(".circular-progress");
 let valuecontainer=document.querySelector(".value-container");
 const resume = result_box.querySelector(".buttons .quit");
 let progressvalue=0;
 let progressendvalue=100;
 let speed=50;
-/* next_btn.addEventListener('click',() =>{
+ next_btn.addEventListener('click',() =>{
     window.location.href='../index.html';  //reload the current window
 
-}); */
+}); 
 
 const newLocal = 20.6;
 let progress = setInterval (() => {
@@ -33,4 +33,4 @@ resume.addEventListener('click',  ()  =>  {
         #b8973d ${progressvalue * 3.6}deg,
         #fcf4de ${progressvalue * 3.6}deg
         )`;
-});
+});*/
