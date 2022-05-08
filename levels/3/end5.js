@@ -1,19 +1,20 @@
-const exit = document.getElementById("dismisss");
-exit.addEventListener('click', () => {
-
-    if (exit.innerHTML == "Try again") {
-        document.getElementById('finish').style.display = 'none';
-        console.log("helllllllllllllllooooo");
-        location.reload();
-    }
-    else
-        window.location.pathname = 'play.html';
-    clickend = 1;
-    stopp = 1;
-
-})
-const next = document.getElementById("nexxt");
-next.addEventListener('click', () => {
+let clickend=0;
+ 
+ const exit = document.getElementById("dismisss");
+exit.addEventListener('click',  ()  =>  {
+   
+    if (exit.innerHTML=="Try again" ){
     document.getElementById('finish').style.display = 'none';
-    window.location.pathname = 'levels/4/maze6.html';
+    console.log("helllllllllllllllooooo");
+    location.reload();}
+     else 
+     window.location.href='play.html';
+     clickend=1;
+     stopp=1;
+
+}) 
+const next=document.getElementById("nexxt");
+next.addEventListener('click',() => {
+    document.getElementById('finish').style.display = 'none';
+    window.location.href='play.html';
 })

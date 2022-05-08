@@ -1,5 +1,4 @@
 const start_btn2 = document.querySelector(".start_btn2 button");
-const info_box2 = document.querySelector(".info_box2");
 const quiz_box2 = document.querySelector(".quiz_box2");
 const result_box2 = document.querySelector(".result_box2");
 const option_list2 = document.querySelector(".option_list2");
@@ -7,17 +6,6 @@ const time_line2 = document.querySelector("header .time_line2");
 const timeText2 = document.querySelector(".timer2 .time_left_txt2");
 const timeCount2 = document.querySelector(".timer2 .timer_sec2");
 
-
-let progress2 = setInterval (() => {
-valuecontainer.textContent= `${progressvalue}%`;
-progressbar.style.background= `conic-gradient(
-    #b8973d ${progressvalue * 3.6}deg,
-    #fcf4de ${progressvalue * 3.6}deg
-    )`;
-if (progressvalue==progressendvalue) {
-    clearInterval(progress);
-}
-}, speed);
 
 
 // if continueQuiz button clicked
@@ -28,7 +16,7 @@ start_btn2.onclick = ()=>{
     showQuetions2(0); //calling showQestions function
     queCounter2(1); //passing 1 parameter to queCounter
     startTimer2(10); //calling startTimer function
-     startTimerLine2(0);  //calling startTimerLine function
+   
 }
 
 let timeValue2 =  10;
@@ -39,29 +27,30 @@ let counter2;
 let counterLine2;
 let widthValue2 = 0;
 
-//const restart_quiz = result_box.querySelector(".buttons .restart");
+const retry2 = result_box2.querySelector(".buttons2 .retry2");
 const resume2 = result_box2.querySelector(".buttons2 .quit2");
 
 var clicked2 =false;
 
 // if quitQuiz button clicked
  resume2.addEventListener('click',  ()  =>  {
-    document.getElementById("popup2").style.display = 'none';
-   // document.getElementById("popup").style.display = 'none';
+    document.getElementById('popup2').style.display = 'none';
+    console.log("resume2");
+    //document.getElementById("popup").style.display = 'none';
    document.getElementById('hint1').style.display = 'block';
    if (progressvalue<100) {
-    progressvalue+=25;
-}
-else{
+    progressvalue+=30;
+    }
+    else{
     progressvalue=100;
-}
-valuecontainer.textContent= `${progressvalue}%`;
-progressbar.style.background= `conic-gradient(
+    }
+    valuecontainer.textContent= `${progressvalue}%`;
+    progressbar.style.background= `conic-gradient(
     #b8973d ${progressvalue * 3.6}deg,
     #fcf4de ${progressvalue * 3.6}deg
     )`;
 
-clicked2=true;
+ clicked2=true;
 
 
 }); 
@@ -82,7 +71,7 @@ next_btn2.addEventListener('click',  ()  =>  {
         clearInterval(counter2); //clear counter
         clearInterval(counterLine2); //clear counterLine
         startTimer2(timeValue2); //calling startTimer function
-        startTimerLine2(widthValue2); //calling startTimerLine function
+      
         timeText2.textContent = "Time Left"; //change the timeText to Time Left
         next_btn2.classList.remove("show"); //hide the next button
     }else{
@@ -109,7 +98,7 @@ function showQuetions2(index){
 
     // set onclick attribute to all available options
     for(i=0; i < option2.length; i++){
-        option2[i].setAttribute("onclick", "optionSelected(this)");
+        option2[i].setAttribute("onclick", "optionSelected2(this)");
     }
 }
 // creating the new div tags which for icons
@@ -117,7 +106,7 @@ let tickIconTag2 = '<div class="icon tick"><i class="fas fa-check"></i></div>';
 let crossIconTag2 = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
 //if user clicked on option
-function optionSelected(answer2){
+function optionSelected2(answer2){
     clearInterval(counter2); //clear counter
     clearInterval(counterLine2); //clear counterLine
     let userAns2 = answer2.textContent; //getting user selected option
@@ -131,6 +120,7 @@ function optionSelected(answer2){
         answer2.insertAdjacentHTML("beforeend", tickIconTag2); //adding tick icon to correct selected option
         console.log("Correct Answer");
         console.log("Your correct answers = " + userScore2);
+        totalscore+= 1;
     }else{
         answer2.classList.add("incorrect"); //adding red color to correct selected option
         answer2.insertAdjacentHTML("beforeend", crossIconTag2); //adding cross icon to correct selected option
@@ -155,19 +145,52 @@ function showResult2(){
     quiz_box2.classList.remove("activeQuiz2"); //hide quiz box
     result_box2.classList.add("activeResult2"); //show result box
     const scoreText2 = result_box2.querySelector(".score_text2");
-    if (userScore2 > 2){ // if user scored more than 3
+    if (userScore2 == 3){ // if user scored more than 3
         //creating a new span tag and passing the user score number and total question number
         let scoreTag2 = '<span>and congrats! , You got <p>'+ userScore2 +'</p> out of <p>'+ questions2.length +'</p></span>';
         scoreText2.innerHTML = scoreTag2;  //adding new span tag inside score_Text
+        userScore2=0;
+        retry2.disabled=true;
+        resume2.disabled=false;
     }
-    else if(userScore2 > 1){ // if user scored more than 1
+    else if(userScore2 >= 1){ // if user scored more than 1
         let scoreTag2 = '<span>and nice , You got <p>'+ userScore2 +'</p> out of <p>'+ questions2.length +'</p></span>';
         scoreText2.innerHTML = scoreTag2;
+        userScore2=0;
+        retry2.disabled=true;
+        resume2.disabled=false;
+
     }
-    else{ // if user scored less than 1
+    else if(userScore2 ==0){ // if user scored less than 1
         let scoreTag2 = '<span>and sorry , You got only <p>'+ userScore2 +'</p> out of <p>'+ questions2.length +'</p></span>';
         scoreText2.innerHTML = scoreTag2;
-    }
+        retry2.addEventListener('click',  ()  =>  {
+            result_box2.classList.remove("activeResult2");
+             timeValue2 =  15;
+             que_count2 = 0;
+              que_numb2 = 1;
+               counter2;
+              counterLine2;
+              widthValue2 = 0;
+        
+            quiz_box2.classList.add("activeQuiz2");
+            
+    
+                 //show quiz box
+            //calling startTimerLine function
+            
+            showQuetions2(0); //calling showQestions function
+            queCounter2(1); //passing 1 parameter to queCounter
+             startTimer2(15); //calling startTimer function
+                   
+                     
+                
+                
+                }); 
+                retry2.disabled=false;
+                resume2.disabled=true;}
+                
+        
 }
 
 function startTimer2(time){
@@ -199,16 +222,7 @@ function startTimer2(time){
     }
 }
 
- function startTimerLine2(time){
-    counterLine2 = setInterval(timer2, 10);
-    function timer2(){
-        time += 1; //upgrading time value with 1
-        time_line2.style.width = time + "px"; //increasing width of time_line with px by time value
-        if(time > 8){ //if time value is greater than 549
-            clearInterval(counterLine2); //clear counterLine
-        }
-    }
-} 
+ 
 
 function queCounter2(index){
     //creating a new span tag and passing the question number and total question

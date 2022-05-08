@@ -1,64 +1,11 @@
-/* initEnemies = function () {
 
-    //addEnemies();
-    var screen = $('screen');
-    for (var i = 0; i < mapEnemies.length; i++) {
-        var enemy = mapEnemies[i];
-        var type = enemyTypes[enemy.type];
-        var img = document.createElement('img');
-        img.src = type.img;
-        img.style.display = "none";
-        img.style.position = "absolute";
-
-        enemy.state = 0;
-        enemy.rot = 0;
-        enemy.dir = 0;
-        enemy.speed = 0;
-        enemy.moveSpeed = type.moveSpeed;
-        enemy.rotSpeed = type.rotSpeed;
-        enemy.numOfStates = type.numOfStates;
-        enemy.prevStyle = {
-            left: 0,
-            top: 0,
-            width: 0,
-            height: 0,
-            clip: '',
-            display: 'none',
-            zIndex: 0
-        };
-        enemy.img = img;
-        enemies.push(enemy);
-        screen.appendChild(img);
-    }
-} */
-
-//----------------------------------------------------------
 
 var enemies = [];
 var mapEnemies = [];
 
 //----------------------------------------------------------
 
-/* var enemyTypes = [
-    {
-        img: 'src/assets/py.png',
-        moveSpeed: 0.05,
-        rotSpeed: 3,
-        numOfStates: 9
-    }
-]; */
 
-//----------------------------------------------------------
-
-/* addEnemies = function () {
-
-    var enemy = {
-        type: 0,
-        x: 8.5,
-        y: 27.5
-    }
-    mapEnemies.push(enemy);
-} */
 
 //----------------------------------------------------------
 
@@ -120,39 +67,3 @@ renderEnemies = function () {
     }
 }
 
-//----------------------------------------------------------
-
-/* enemyAI = function (enemy) {
-
-    var dx = player.x - enemy.x;
-    var dy = player.y - enemy.y;
-    var distance = Math.sqrt(dx * dx + dy * dy);
-    if ((distance > 2) && (distance < 8)) {
-        var angle = Math.atan2(dy, dx);
-        enemy.rotDeg = angle * 180 / Math.PI;
-        enemy.rot = angle;
-        enemy.speed = 1;
-        var walkCycleTime = 1000;
-        var numWalkSprites = 7;
-        enemy.state = Math.floor((new Date() % walkCycleTime) / (walkCycleTime / numWalkSprites)) + 1;
-    } else {
-        enemy.state = 0;
-        enemy.speed = 0;
-    }
-    enemyMove(enemy);
-}
-
-//----------------------------------------------------------
-
-enemyMove = function (enemy) {
-
-    var moveStep = enemy.speed * enemy.moveSpeed;
-    var newX = enemy.x + Math.cos(enemy.rot) * moveStep;
-    var newY = enemy.y + Math.sin(enemy.rot) * moveStep;
-
-    // vars take player's collision checker
-    var pos = checkCollision(enemy.x, enemy.y, newX, newY, 0.35);
-    enemy.x = pos.x;
-    enemy.y = pos.y;
-} 
- */

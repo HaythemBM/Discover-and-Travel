@@ -1,10 +1,15 @@
 /* importing google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@font-face {
+    font-family:'Cairo' ;
+    src: url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+}
+/* url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap'); */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Cairo', sans-serif;
 }
 #popup{
     background-color: #ffffff;
@@ -15,8 +20,9 @@
     left: 50%;
     top: 50%;
     border-radius: 8px;
-    font-family: "Poppins",sans-serif;
-    display: none;
+    /* font-family: "Poppins",sans-serif; */
+    font-family: 'Cairo', sans-serif;
+     display: none; 
     text-align: center;
 }
 
@@ -29,14 +35,9 @@ body{
     color: #fff;
     background: #d6c9b2;
 }
-
-
-
-.start_btn,
-.info_box,
-.quiz_box,
-.result_box{
+.start_btn{
     position: absolute;
+    font-family: 'Cairo', sans-serif;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -44,9 +45,23 @@ body{
                 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.info_box.activeInfo,
+
+
+
+.result_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                font-family: 'Cairo', sans-serif;
+}
+
+
 .quiz_box.activeQuiz,
-.result_box.activeResult{
+.result_box.activeResult
+{
     opacity: 1;
     z-index: 5;
     pointer-events: auto;
@@ -69,7 +84,8 @@ body{
 
 
 .quiz_box{
-   /* padding: 15px ;*/
+    width: 500px;
+    /* padding: 15px ; */
     background: #fff;
     border-radius: 5px;
     transform: translate(-50%, -50%) scale(0.9);
@@ -80,6 +96,17 @@ body{
     position : absolute;
     z-index: 1;
     margin-bottom: 80px;
+  
+    font-family: 'Cairo', sans-serif;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+               
+    height: 700px;
+    padding: 25px 30px 30px 30px;
+    background-image: url("src/assets/fff.jpg");
 }
 
 
@@ -98,6 +125,7 @@ body{
     align-items: center;
     justify-content: space-between;
     width: 145px;
+    font-family: 'Cairo', sans-serif;
 }
 
 .quiz_box  .timer .time_left_txt{
@@ -108,7 +136,7 @@ body{
 
 .quiz_box .timer .timer_sec{
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     height: 30px;
     width: 45px;
     color: #fff;
@@ -120,32 +148,39 @@ body{
     user-select: none;
 }
 
-.quiz_box .time_line{
+/* .quiz_box .time_line{
     position: absolute;
     bottom: 0px;
     left: 0px;
     height: 3px;
     background: #b8b8b8;
-}
+} */
  
-.quiz_box {
-    width: 400px;
-    height: 590px;
+/* .quiz_box {
+    width: 500px;
+    height: 700px;
     padding: 25px 30px 30px 30px;
-    background-image: url("src/assets/fff.jpg");
+    background-image: url("src/assets/f.jpg");
     margin-left: 30px;
     margin-bottom: 80px;
-}
+    font-family: "Cairo", sans-serif;
+} */
 
 .quiz_box .que_text{
-    font-size: 30px;
+    font-family: 'Cairo', sans-serif;
+
+    font-size: 36px;
     font-weight: 400;
     margin-top: 40px;
+    margin-bottom: 40px;
+    
+  padding:20px;
 }
 
 .quiz_box.option_list{
-    padding: 20px 0px;
-    display: block;   
+    padding: 10px 0px;
+    display: block; 
+    margin-top: 10px;  
 }
 
 .quiz_box .option_list .option{
@@ -278,6 +313,8 @@ footer button.show{
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
+    font-family: 'Cairo', sans-serif;
+
 }
 
 .result_box .icon{
@@ -295,7 +332,7 @@ footer button.show{
     display: flex;
     margin: 10px 0;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .result_box .score_text span p{
@@ -309,6 +346,8 @@ footer button.show{
 }
 
 .result_box .buttons button{
+    font-family: 'Cairo', sans-serif;
+
     margin: 0 10px;
     height: 45px;
     padding: 0 20px;
@@ -331,12 +370,21 @@ footer button.show{
     background: #0263ca;
 } */
 
-.buttons button.quit{
+/*  .buttons button.quit{
     color: #4e381f;
     background: #fff;
-}
+} */
 
 .buttons button.quit:hover{
     color: #fff;
-    background: #737475;
+    background: #959795;
 }
+/* .buttons button.retry{
+    color: #4e381f;
+    background: #fff;
+}
+ */
+.buttons button.retry:hover{
+    color: #fff;
+    background: #959795;
+} 

@@ -13,14 +13,14 @@ function initScreen() {
         strip.style.overflow = "hidden";
 
         var img = new Image();
-        img.src = ("src/assets/brazil.jpg");
+        img.src = ("src/assets/br1.jpg");
         img.style.position = "absolute";
         img.prevStyle = {
             height: 0,
             width: 0,
             top: 0,
             left: 0,
-
+            
         }
         strip.appendChild(img);
         strip.img = img;
@@ -36,11 +36,11 @@ function initScreen() {
 }
 //----------------------------------------------------------
 
-var screenWidth = screen.availWidth - 125;
-var screenHeight = screen.availHeight - 160;
+var screenWidth = window.innerWidth;
+var screenHeight = window.innerHeight;
 var screenStrips = [];
-var numoftex = 2;
-var stripWidth = 1;
+var numoftex = 3;
+var stripWidth = 2;
 var fov = 120 * Math.PI / 180;
 var numofrays = Math.ceil(screenWidth / stripWidth);
 var viewDist = (screenWidth / 2) / Math.tan((fov / 2));
@@ -117,9 +117,7 @@ castRay = function (rayAngle, stripIdx) {
         wallX = (x + (right ? 0 : -1)) >> 0;
         wallY = (y) >> 0;
 
-        if (spritePosition[wallY][wallX] && !spritePosition[wallY][wallX].visible) {
-            spritePosition[wallY][wallX].visible = true;
-        }
+       
 
         if (map[wallY][wallX] > 0) {
             var distX = x - player.x;
@@ -151,9 +149,9 @@ castRay = function (rayAngle, stripIdx) {
         wallY = (y + (up ? -1 : 0)) >> 0;
         wallX = (x) >> 0;
 
-        if (spritePosition[wallY][wallX] && !spritePosition[wallY][wallX].visible) {
+        /* if (spritePosition[wallY][wallX] && !spritePosition[wallY][wallX].visible) {
             spritePosition[wallY][wallX].visible = true;
-        }
+        } */
 
         if (map[wallY][wallX] > 0) {
             var distX = x - player.x;
@@ -218,7 +216,7 @@ castRay = function (rayAngle, stripIdx) {
         }
         strip.fog.style.height = height >> 0 + "px";
         strip.fog.style.width = (width * 2) >> 0 + "px";
-        /*  strip.fog.style.background = "rgba(0,0,0," + distance / 10 + ")"; */
+       /*  strip.fog.style.background = "rgba(0,0,0," + distance / 10 + ")"; */
     }
     /* drawRay(xHit, yHit); */
 }
