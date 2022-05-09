@@ -9,7 +9,7 @@
 
 body{
     height: 100vh;
-    background: url(World.png);
+    background: url("world.png");
     background-size: 100%;
     background-size: cover;
     background-position: top;

@@ -46,7 +46,7 @@ move = function (timeDelta) {
     } 
     else 
     stopp =0 ;
-    if(((player.x<14.6 && player.y<14.55) ||(player.x<14.74 && player.y>14.65)||(player.x<14.43 && player.y>14.47)) && clicked2 === false ){
+    if((((player.x<14.6 && player.y<14.55) ||(player.x<14.74 && player.y>14.65)||(player.x<14.43 && player.y>14.47)) && clicked2 === false) ){
       document.getElementById("popup2").style.display = "block";
       console.log('popup2');
       stopp=1; 
