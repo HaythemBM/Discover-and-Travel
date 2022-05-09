@@ -340,28 +340,12 @@ footer button.show{
     transition: all 0.3s ease;
 }
 
-/* .buttons button.restart{
-    color: #fff;
-    background: #007bff;
-}
-
-.buttons button.restart:hover{
-    background: #0263ca;
-} */
-
-/* .buttons3 button.quit3{
-    color: #4e381f;
-    background: #fff;
-} */
 
 .buttons3 button.quit3:hover{
     color: #fff;
     background: #737475;
 }
-/* .buttons3 button.retryt3{
-    color: #4e381f;
-    background: #fff;
-} */
+
 
 .buttons3 button.retry3:hover{
     color: #fff;

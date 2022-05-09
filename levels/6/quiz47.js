@@ -154,7 +154,7 @@ function showResult7(){
     quiz_box7.classList.remove("activeQuiz7"); //hide quiz box
     result_box7.classList.add("activeResult7"); //show result box
     const scoreText7 = result_box7.querySelector(".score_text7");
-    if (userScore7 == 2){ // if user scored more than 3
+    if (userScore7 == 3){ // if user scored more than 3
         //creating a new span tag and passing the user score number and total question number
         let scoreTag7 = '<span>and congrats! , You got <p>'+ userScore7 +'</p> out of <p>'+ questions7.length +'</p></span>';
         scoreText7.innerHTML = scoreTag7;  //adding new span tag inside score_Text

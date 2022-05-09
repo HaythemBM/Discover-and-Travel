@@ -90,7 +90,7 @@ body{
     margin-top: 30px;
     padding: 0 30px;
     color: #1b180c;
-    background: #d1bba1;
+    background: #fbfbfb;
     border: 1px solid #413f36;
     height: 45px;
     border-radius: 5px;
@@ -149,7 +149,7 @@ body{
 }
 
 .quiz_box2 .option_list2 .option2{
-    background: #d1bba1;
+    background: #ffffff;
     border: 1px solid #413f36;
     border-radius: 5px;
     padding: 8px 15px;
@@ -245,7 +245,7 @@ footer button{
     outline: none;
     color: rgb(24, 22, 22);
     border-radius: 5px;
-    background: #d1bba1;
+    background: #ffffff;
     border: 1px solid #1d1e1f;
     line-height: 10px;
     opacity: 0;
@@ -331,10 +331,6 @@ footer button.show{
     background: #0263ca;
 } */
 
-.buttons2 button.quit2{
-    color: #4e381f;
-    background: #fff;
-}
 
 .buttons2 button.quit2:hover{
     color: #fff;

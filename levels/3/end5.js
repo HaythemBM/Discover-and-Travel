@@ -5,10 +5,10 @@ exit.addEventListener('click',  ()  =>  {
    
     if (exit.innerHTML=="Try again" ){
     document.getElementById('finish').style.display = 'none';
-    console.log("helllllllllllllllooooo");
+  
     location.reload();}
      else 
-     window.location.href='play.html';
+     window.location.pathname='play.html';
      clickend=1;
      stopp=1;
 
@@ -16,5 +16,5 @@ exit.addEventListener('click',  ()  =>  {
 const next=document.getElementById("nexxt");
 next.addEventListener('click',() => {
     document.getElementById('finish').style.display = 'none';
-    window.location.href='play.html';
+    window.location.pathname = 'levels/4/maze6.html';
 })

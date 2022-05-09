@@ -8,16 +8,6 @@ const timeText5 = document.querySelector(".timer5 .time_left_txt5");
 const timeCount5 = document.querySelector(".timer5 .timer_sec5");
 
 
-/*let progress = setInterval (() => {
-    valuecontainer.textContent= `${progressvalue}%`;
-    progressbar.style.background= `conic-gradient(
-        #b8973d ${progressvalue * 3.6}deg,
-        #fcf4de ${progressvalue * 3.6}deg
-        )`;
-    if (progressvalue==progressendvalue) {
-        clearInterval(progress);
-    }
-    }, speed);*/
     
 // if continueQuiz button clicked
 start_btn5.onclick = ()=>{

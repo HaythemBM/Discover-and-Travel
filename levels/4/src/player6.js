@@ -74,7 +74,7 @@ move = function (timeDelta) {
         if(player.x>3.4 && player.x<4.4 && player.y>20.43){
         document.getElementById("finish").style.display = "block";
         console.log('popupgl');
-        //stopp=1; 
+        stopp=1; 
         stoop();
        }  
 }

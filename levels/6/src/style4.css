@@ -13,41 +13,30 @@ body {
      z-index: 0;
 }
 model-viewer{
-    width: 180px;
-    height: 500px;
+    width: 500px;
+    height: 800px;
     z-index: 9999;
     position: fixed;
-    top: 150px;
-    left: 640px;
+    top: 250px;
+    left: 670px;
     display: flex;
 }
-/* #map {
-    background: rgba(255, 255, 255, 0.5);
 
-    position: relative;
-    left: 10px;
-    top: 10px;
-    /* i know, it's ugly 
-    z-index: 99999;
-    
-} */
 
-/* #minimap { position: absolute; } */
 #objects { position: relative; }
 
 #floor {
     position: absolute;
     width: 100%;
     height: 100%;
-    /* background: linear-gradient(to bottom, #000 50%, #42301c 100%); */
-    background-image: url("assets/floor2.jpg");  ;
+    background-image: url("assets/Floor.jpg");  ;
     
 
 }
 
 #ceiling {
     position: absolute;
-    width: 200%;
+    width: 100%;
     height: 50%;
  background-image: url("assets/f1.webp"); 
 
@@ -76,10 +65,7 @@ model-viewer{
     box-sizing: border-box;
     z-index: 2;
     text-align: center;
-    /* transform: translate(-50%,-50%) scale(0.5);
-    transition: opacity 300ms ease-in-out,
-                top 1000ms ease-in-out,
-                transform 1000ms ease-in-out;    */ 
+    
                 opacity: 8;
                 transform: translate(-50%,-50%) scale(1);
                 transition: transform 300ms cubic-bezier(0.18,0.89,0.43,1.19);     
@@ -110,15 +96,7 @@ model-viewer{
     color: #111;
     background: #fabdf7;
 }
-/* #nexxt{
-    display: block;
-    margin-left: 50px;
-    margin-top: ;
-}
-#dismisss{
-    display: block;
-    margin-left: 240px;
-} */
+
 
   #js_timer {
    
@@ -139,8 +117,20 @@ model-viewer{
     font-family: "Cairo",sans-serif;
     font-size: 30px;
   } 
-  .audio {
+#icon{
+    width :50px;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-left : 1850px;
     position: absolute;
-    left: -999px;
-    top: -999px;
+    z-index: 999;
+}
+#iconn{
+  width :50px;
+  margin-top: 20px;
+    cursor: pointer;
+    margin-left : 1850px;
+    position: absolute;
+    z-index: 999;
+  display: none;
 }

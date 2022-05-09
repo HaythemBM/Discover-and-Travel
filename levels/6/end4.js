@@ -1,16 +1,19 @@
-document.getElementById("finish").addEventListener("click",function(){document.getElementsByClassName("ppopupp")[0].classList.add("active");
-if (progressvalue<100) {
-    progressvalue+=16;
-}
-else{
-    progressvalue=100;
-}
-valuecontainer.textContent= `${progressvalue}%`;
-progressbar.style.background= `conic-gradient(
-    #b8973d ${progressvalue * 3.6}deg,
-    #fcf4de ${progressvalue * 3.6}deg
-    )`;
+let clickend=0;
+ 
+ const exit = document.getElementById("dismisss");
+exit.addEventListener('click',  ()  =>  {
+   
+    if (exit.innerHTML=="Try again" ){
+    document.getElementById('finish').style.display = 'none';
+    location.reload();}
+     else 
+     window.location.pathname='play.html';
+     clickend=1;
+     stopp=1;
 
-});
-document.getElementById("finish").addEventListener("click",function(){document.getElementsByClassName("ppopupp")[0].classList.remove("active");
-});
+}) 
+const next=document.getElementById("nexxt");
+next.addEventListener('click',() => {
+    document.getElementById('finish').style.display = 'none';
+    window.location.pathname = 'play.html';
+})

@@ -157,13 +157,21 @@ function showResult2(){
     quiz_box2.classList.remove("activeQuiz2"); //hide quiz box
     result_box2.classList.add("activeResult2"); //show result box
     const scoreText2 = result_box2.querySelector(".score_text2");
-    if (userScore2 >= 1){ // if user scored more than 3
+    if (userScore2 == 3){ // if user scored more than 3
         //creating a new span tag and passing the user score number and total question number
         let scoreTag2 = '<span>and congrats! , You got <p>'+ userScore2 +'</p> out of <p>'+ questions2.length +'</p></span>';
         scoreText2.innerHTML = scoreTag2;  //adding new span tag inside score_Text
         userScore2=0;
         retry2.disabled=true;
         resume2.disabled=false;
+    }
+    else if(userScore2 >= 1){ // if user scored more than 1
+        let scoreTag2 = '<span>and nice , You got <p>'+ userScore2 +'</p> out of <p>'+ questions2.length +'</p></span>';
+        scoreText2.innerHTML = scoreTag2;
+        userScore2=0;
+        retry2.disabled=true;
+        resume2.disabled=false;
+
     }
     else if(userScore2 ==0){ // if user scored less than 1
         let scoreTag2 = '<span>and sorry , You got only <p>'+ userScore2 +'</p> out of <p>'+ questions2.length +'</p></span>';
@@ -185,15 +193,16 @@ function showResult2(){
             
             showQuetions2(0); //calling showQestions function
             queCounter2(1); //passing 1 parameter to queCounter
-            startTimer2(15); //calling startTimer function
-            startTimerLine2(0);
-             
+             startTimer2(15); //calling startTimer function
+                   
+                     
+                
+                
+                }); 
+                retry2.disabled=false;
+                resume2.disabled=true;}
+                
         
-        
-        }); 
-        retry2.disabled=false;
-        resume2.disabled=true;
-        }
 }
 
 function startTimer2(time){

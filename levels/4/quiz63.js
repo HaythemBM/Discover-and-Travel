@@ -7,17 +7,6 @@ const time_line3 = document.querySelector("header .time_line3");
 const timeText3 = document.querySelector(".timer3 .time_left_txt3");
 const timeCount3 = document.querySelector(".timer3 .timer_sec3");
 
-
-/*let progress = setInterval (() => {
-    valuecontainer.textContent= `${progressvalue}%`;
-    progressbar.style.background= `conic-gradient(
-        #b8973d ${progressvalue * 3.6}deg,
-        #fcf4de ${progressvalue * 3.6}deg
-        )`;
-    if (progressvalue==progressendvalue) {
-        clearInterval(progress);
-    }
-    }, speed);*/
     
 // if continueQuiz button clicked
 start_btn3.onclick = ()=>{
