@@ -127,3 +127,20 @@ model-viewer{
     font-family: "Cairo",sans-serif;
     font-size: 30px;
   } 
+  #icon{
+    width :50px;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-left : 1850px;
+    position: absolute;
+    z-index: 999;
+}
+#iconn{
+  width :50px;
+  margin-top: 20px;
+    cursor: pointer;
+    margin-left : 1850px;
+    position: absolute;
+    z-index: 999;
+  display: none;
+}

@@ -16,9 +16,37 @@
 
 <body>
     <div id="container">
+        <img src="src/assets/volume.png" id="icon">
+        <img src="src/assets/mute.png" id ="iconn">
+        <audio autoplay  id="mySong" >
+            <source src="india.mp3" type="audio/mp3">
+        </audio>
+        <script>
+            var mySong=document.getElementById("mySong");
+            var icon=document.getElementById("icon");
+            var count=0;
+            mySong.play();
+            icon.onclick = function(){
+                if (count == 0){
+                    count=1;
+                    mySong.pause();
+                    document.getElementById("icon").style.display="none";
+                    document.getElementById("iconn").style.display="block";
+
+                
+              
+            }}
+            iconn.onclick = function(){
+                if (count == 1){
+                    count=0;
+                    mySong.play();
+                    document.getElementById("icon").style.display="block";
+                    document.getElementById("iconn").style.display="none";}}
+
+                       </script>
         <div id="screen">
             <div id="floor">
-                <model-viewer id="paused-change-demo" bounds="tight" src="Adventurer.glb" camera-controls
+                <model-viewer id="paused-change-demo" bounds="tight" src="Adventurer.glb" 
                     environment-image="neutral" poster="poster.webp" shadow-intensity="1.8" autoplay
                     animation-name="CharacterArmature|Idle_Neutral" camera-orbit="130.9deg 64.34deg auto"
                     min-camera-orbit="-180deg 72deg auto" max-camera-orbit="-180deg 72deg auto"
